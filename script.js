@@ -4,8 +4,10 @@ const screen2 = document.querySelector('.screen2')
 const btnTry = document.querySelector('#btnTry')
 const btnReset = document.querySelector('#btnReset')
 const inputNumber = document.querySelector('#inputNumber')
+let errorMessage = screen1.querySelector('#errorMessage')
 let randomNumber = generateRandomNumber()
 let xAttempts = 0
+
 
 // Events, Eventos
 btnTry.addEventListener('click', handleTryClick)
@@ -30,13 +32,20 @@ function handleTryClick(event){
 
     screen2.querySelector('h2').innerText = `O número sorteado foi ${randomNumber}.
     Você acertou em ${xAttempts} tentativas!`
-  } else {printAlert()
+  } else {
+    printAlert()
   }
+  
+  errorMessage.classList.remove('hide')
+  errorMessage.innerText = `Você errou! Seu número foi: ${Number(inputNumber.value)}`
+  resetAnimation()
+  
   inputNumber.value=''
 }
 
 function handleResetClick(){
   randomNumber = generateRandomNumber()
+  hideErrorMessage()
   screenToggle()
   xAttempts = 0
   inputNumber.focus()
@@ -61,4 +70,15 @@ function printAlert(){
   if(Number(inputNumber.value) < 0 || Number(inputNumber.value) > 10){
     alert('Insira um número entre 0 e 10')
   }
+}
+
+function hideErrorMessage(){
+  errorMessage.classList.add('hide')
+}
+
+function resetAnimation(){
+  errorMessage.style.animation = 'none'
+  setTimeout(function() {
+    errorMessage.style.animation = ''
+  }, 10)
 }

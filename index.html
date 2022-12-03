@@ -10,6 +10,10 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 </head>
 
 <body>
@@ -22,6 +26,10 @@
         <input type="number" id="inputNumber" required min="0" max="10">
         <button id="btnTry">Tentar</button>
       </form>
+
+      <footer>
+        <p id="errorMessage" class="animate__animated animate__headShake hide">Número errado!</p>
+      </footer>
     </div>
     
     <div class="screen2 hide">
